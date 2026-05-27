@@ -23,26 +23,26 @@ class Settings(BaseSettings):
     """
 
     # ── App ───────────────────────────────────────────
-    app_name: str = Field(default="AI Email Generator")
-    app_version: str = Field(default="1.0.0")
-    app_env: str = Field(default="development")
-    debug: bool = Field(default=False)
-    port: int = Field(default=8000)
+    APP_NAME: str = Field(default="AI Email Generator")
+    APP_VERSION: str = Field(default="1.0.0")
+    APP_ENV: str = Field(default="development")
+    DEBUG: bool = Field(default=False)
+    PORT: int = Field(default=8000)
 
     # ── Groq LLM ─────────────────────────────────────
-    groq_api_key: SecretStr = Field(default=SecretStr(""))
-    groq_model: str = Field(default="llama-3.1-8b-instant")
+    GROQ_API_KEY: str = Field(default="")
+    GROQ_MODEL: str = Field(default="llama-3.1-8b-instant")
 
     # ── PostgreSQL ────────────────────────────────────
-    database_url: str = Field(
+    DATABASE_URL: str = Field(
         default="postgresql+asyncpg://user:password@localhost:5432/email_generator"
     )
 
     # ── Redis ──────────────────────────────────────────────
-    redis_url: str = Field(default="redis://localhost:6379/0")
+    REDIS_URL: str = Field(default="redis://localhost:6379/0")
 
     # ── Rate Limiting ──────────────────────────────────────
-    rate_limit_per_minute: int = Field(default=10)
+    RATE_LIMIT_PER_MINUTE: int = Field(default=10)
 
     model_config = (SettingsConfigDict)(
         env_file=".env", env_file_encoding="utf-8", extra="ignore"

@@ -58,9 +58,9 @@ async def health_check() -> HealthResponse:
     """
     return HealthResponse(
         status="healthy",
-        app_name=settings.app_name,
-        version=settings.app_version,
-        environment=settings.app_env,
+        app_name=settings.APP_NAME,
+        version=settings.APP_VERSION,
+        environment=settings.APP_ENV,
         timestamp=datetime.now(timezone.utc).isoformat(),
     )
 
@@ -91,9 +91,9 @@ async def readiness_check() -> ReadinessResponse:
 
     return ReadinessResponse(
         status=overall_status,
-        app_name=settings.app_name,
-        version=settings.app_version,
-        environment=settings.app_env,
+        app_name=settings.APP_NAME,
+        version=settings.APP_VERSION,
+        environment=settings.APP_ENV,
         timestamp=datetime.now(timezone.utc).isoformat(),
         dependencies=dependencies,
     )
